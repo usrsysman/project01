@@ -1,0 +1,35 @@
+.dialogs {
+    display: grid;
+    margin: 0 auto;
+    grid-template-areas:
+    "d m";
+    /*grid-template-rows: auto 1fr;*/
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 20px;
+}
+
+.dialogsItems {
+    grid-area: d;
+    background-color: darkcyan;
+    padding: 15px;
+}
+
+.dialog {
+    color: gold;
+    text-decoration: none;
+ }
+
+/*.dialogsItems .active {*/
+/*    color: tan;*/
+/*}*/
+
+.messages {
+    grid-area: m;
+    background-color: lime;
+    padding: 15px;
+}
+
+.message {
+
+}
+
