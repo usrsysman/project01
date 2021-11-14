@@ -14,6 +14,10 @@
     padding: 15px;
 }
 
+.dialogsItems img {
+    width: 30px;
+}
+
 .dialog {
     color: gold;
     text-decoration: none;
@@ -25,7 +29,7 @@
 
 .messages {
     grid-area: m;
-    background-color: lime;
+    background-color: cornflowerblue;
     padding: 15px;
 }
 
