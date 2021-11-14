@@ -7,11 +7,11 @@ import Messages from "./Messeges/Messages";
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.dialogsApp.map((d) => {
+    let dialogsElements = props.state.DialogsData.map((d) => {
         return <div><DialogsItem name={d.name} id={d.id}/></div>;
     })
 
-    let messagesElements = props.messagesApp.map((m) => {
+    let messagesElements = props.state.MessagesData.map((m) => {
         return <Messages message={m.message}/>;
     })
 
