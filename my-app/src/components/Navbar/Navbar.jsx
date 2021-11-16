@@ -1,8 +1,9 @@
 import React from "react";
 import c from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
+import DialogsItem from "../Dialogs/DialogsItem/DialogsItem";
 
-const Navbar = () => {
+const Navbar = (props) => {
     return <nav className={c.nav}>
         <div className={c.item}>
             <NavLink to="/profile" activeClassName={c.active}>Profile</NavLink>
@@ -21,7 +22,12 @@ const Navbar = () => {
             <NavLink to="/settings">Settings</NavLink>
         </div>
         <div className={c.item}>
-           Friends
+            <div>
+                <div>
+                    Friends
+                </div>
+                <div>{props.sb.img} {props.sb.name}</div>
+            </div>
         </div>
     </nav>
 }

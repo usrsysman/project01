@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Dialogs from "./components/Dialogs/Dialogs";
 import Profile from "./components/Profile/Profile";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {addPosts} from "./components/Redux/State";
+
 
 // themeforest social networks преобразовать соцсеть
 
@@ -13,10 +15,11 @@ const App = (props) => {
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <Navbar/>
+                <Navbar sb={props.state.sitebar}/>
                 <div className="app-wrapper-content">
                     <Routes>
-                        <Route path='profile' element={<Profile state={props.state.profilePage}/>}/>
+                        <Route path='profile'
+                               element={<Profile state={props.state.profilePage} addPosts={props.addPosts}/>}/>
                         <Route path='messages' element={<Dialogs state={props.state.dialogsPage}/>}/>
                         <Route path='news' element={"#"}/>
                         <Route path='music' element={"#"}/>

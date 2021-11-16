@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import p from "./MyPosts.module.css";
-
 import Posts from "./Posts/Posts";
+
 
 const MyPosts = (props) => {
 
@@ -9,14 +9,22 @@ const MyPosts = (props) => {
         return <Posts message={p.message} likeCount={0}/>;
     })
 
+    let NewPostsElement = React.createRef();
+
+    let newPosts = () => {
+        debugger;
+        let text = NewPostsElement.current.value;
+        props.addPosts(text);
+    }
+
     return (
         <div className={p.MyPostsBlock}>
             <h4>My posts</h4>
             <div>
                 <div>
-                    <textarea name="" id="" cols="60" rows="10"></textarea>
+                    <textarea ref={ NewPostsElement } cols="60" rows="10"></textarea>
                 </div>
-                <button>Add new post</button>
+                <button onClick={newPosts}>Add new post</button>
             </div>
             <div className={p.posts}>
                 {postsElements}
