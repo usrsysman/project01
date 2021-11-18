@@ -1,3 +1,7 @@
+let rerenderAllTree = () => {
+    console.log('sdf');
+}
+
 let State = {
     profilePage: {
         PostsData: [
@@ -5,7 +9,8 @@ let State = {
             {id: 2, message: "Hey. i'm write new post for you"},
             {id: 3, message: "Today i learning react. I no sleep!"},
             {id: 4, message: "Today Tomorrow Forever"}
-        ]
+        ],
+        textPost : "text from state"
     },
     dialogsPage: {
         DialogsData: [
@@ -56,12 +61,23 @@ let State = {
     ]
 }
 
-export let addPosts = (textPosts) => {
+window.state = State;
+
+export const addPosts = () => {
     let newPost = {
-        id: 5, message: textPosts
+        id: 5, message: State.profilePage.textPost
     };
-    debugger;
-    State.profilePage.PostsData.push(textPosts);
+    State.profilePage.PostsData.push(newPost);
+    rerenderAllTree(State);
+};
+
+export const updateTextPosts = (textPosts) => {
+    State.profilePage.textPost = textPosts;
+    rerenderAllTree(State);
+};
+
+export let subscribe = (observer) => {
+    rerenderAllTree = observer;
 }
 
 export default State;
