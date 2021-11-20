@@ -14,14 +14,14 @@ const MyPosts = (props) => {
 
     let newPosts = () => {
         // let text = NewPostsElement.current.value;
-        props.addPosts();
+        props.dispatch({ type: 'ADD-POSTS'});
         NewPostsElement.current.value = '';
-        // props.updateTextPosts('');
     }
 
     let updateTextPosts = () => {
         let text = NewPostsElement.current.value;
-        props.updateTextPosts(text);
+        let newVar = {type: 'UPDATE-NEW-POST-TEXT', textPosts: text};
+        props.dispatch(newVar); //ctrl alt v
     }
 
     return (
