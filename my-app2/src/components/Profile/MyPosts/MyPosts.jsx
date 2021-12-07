@@ -5,7 +5,6 @@ import {addPostsAction, updateTextPostsAction} from "../../Redux/profile-reducer
 
 
 const MyPosts = (props) => {
-
     let postsElements = props.arrayDataPosts.map((p) => {
         return <Posts message={p.message} likeCount={0}/>;
     })
@@ -14,14 +13,15 @@ const MyPosts = (props) => {
 
     let newPosts = () => {
         // let text = NewPostsElement.current.value;
-        props.dispatch(addPostsAction());
-        NewPostsElement.current.value = '';
+        props.NewPosts();
+        // props.dispatch(addPostsAction());
+        // NewPostsElement.current.value = '';
     }
 
     let updateTextPosts = () => {
         let text = NewPostsElement.current.value;
         // let newVar = {type: 'UPDATE-NEW-POST-TEXT', textPosts: text};
-        props.dispatch(updateTextPostsAction(text)); //ctrl alt v
+        props.onUpdateTextPosts(text); //ctrl alt v
     }
 
     return (

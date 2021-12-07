@@ -15,21 +15,21 @@ import {addMessageAction} from "../Redux/dialogs-reducer";
 
 const Dialogs = (props) => {
 
+    let dialogsElements =  props.dialogsPage.DialogsData.map((d) => {
+        return <div><DialogsItem key={d.id} name={d.name} id={d.id} img={d.img}/></div>;
+    })
+
+    let messagesElements = props.dialogsPage.MessagesData.map((m) => {
+        return <Messages key={m.id} message={m.message}/>;
+    })
+
     let NewMessageElement = React.createRef();
 
     let addMessage = () => {
         let text = NewMessageElement.current.value;
-        props.dispatch(addMessageAction(text));
+        props.addMessageBody(text);
         NewMessageElement.current.value = '';
     }
-
-    let dialogsElements =  props.state.DialogsData.map((d) => {
-        return <div><DialogsItem name={d.name} id={d.id} img={d.img}/></div>;
-    })
-
-    let messagesElements = props.state.MessagesData.map((m) => {
-        return <Messages message={m.message}/>;
-    })
 
     return (
         <div className={d.dialogs}>

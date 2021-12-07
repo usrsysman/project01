@@ -1,3 +1,10 @@
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import sitebarReducer from "./sitebar-reducer";
+
+const varADD_POSTS = 'ADD-POSTS';
+const varUpdate_Posts = 'UPDATE-NEW-POST-TEXT';
+const varADD_Message = 'ADD-NEW-MESSAGES-TEXT';
 
 let store = {
     _State: {
@@ -41,6 +48,7 @@ let store = {
                 {id: 3, message: "Yo and two"},
                 {id: 4, message: "good??"}
             ]
+            // newTextMessages: "text from message"
         },
         sitebar: [
             {
@@ -71,6 +79,13 @@ let store = {
         this._State.profilePage.PostsData.push(newPost);
         this._callSubscriber(this._State);
     },
+    _addMessage(textMessage) {
+        let newMessage = {
+            id: 5, message: textMessage
+        };
+        this._State.dialogsPage.MessagesData.push(newMessage);
+        this._callSubscriber(this._State);
+    },
     _updateTextPosts(textPosts) {
         this._State.profilePage.textPost = textPosts;
         this._callSubscriber(this._State);
@@ -79,13 +94,20 @@ let store = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
-        if (action.type === 'ADD-POSTS') {
-            this._addPosts();
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._updateTextPosts(action.textPosts);
-        }
+        debugger;
+        profileReducer(this,action);
+        dialogsReducer(this,action);
+        sitebarReducer(this,action);
+        // if (action.type === varADD_POSTS) {
+        //     this._addPosts();
+        // } else if (action.type === varUpdate_Posts) {
+        //     this._updateTextPosts(action.textPosts);
+        // } else if (action.type === varADD_Message) {
+        //     this._addMessage(action.textMessage);
+        // }
     }
 }
+
 
 window.store = store;
 

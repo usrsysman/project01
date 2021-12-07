@@ -1,0 +1,20 @@
+.dialogs {
+    display: grid;
+    margin: 0 auto;
+    grid-template-areas:
+    "d m";
+    /*grid-template-rows: auto 1fr;*/
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 20px;
+}
+
+.messages {
+    grid-area: m;
+    background-color: lime;
+    padding: 15px;
+}
+
+.message {
+
+}
+
